@@ -28,7 +28,10 @@ class HistoryPage extends ViewModelPageBuilder<HistoryViewModel> {
 
   @override
   Widget builder(
-      BuildContext context, HistoryViewModel viewModel, Widget? child) {
+    BuildContext context,
+    HistoryViewModel viewModel,
+    Widget? child,
+  ) {
     return build(context);
   }
 

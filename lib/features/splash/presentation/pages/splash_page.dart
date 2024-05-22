@@ -30,7 +30,7 @@ class SplashPage extends ViewModelPageBuilder<SplashViewModel> {
                 router.replace(const GameConfigRoute());
               },
               child: const Text('To Game Config >'),
-            )
+            ),
           ],
         ),
       ),
@@ -39,7 +39,10 @@ class SplashPage extends ViewModelPageBuilder<SplashViewModel> {
 
   @override
   Widget builder(
-      BuildContext context, SplashViewModel viewModel, Widget? child) {
+    BuildContext context,
+    SplashViewModel viewModel,
+    Widget? child,
+  ) {
     return build(context);
   }
 
