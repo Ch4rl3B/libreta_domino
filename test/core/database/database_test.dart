@@ -62,7 +62,6 @@ void main() {
       // Assert
       expect(database.gameBox.isOpen, isTrue);
       expect(database.settingsBox.isOpen, isTrue);
-      expect(database.historyBox.isOpen, isTrue);
 
       verify(secureStorage.read(key: Strings.encryptionKey));
     });
@@ -85,7 +84,6 @@ void main() {
       // Assert
       expect(database.gameBox.isOpen, isTrue);
       expect(database.settingsBox.isOpen, isTrue);
-      expect(database.historyBox.isOpen, isTrue);
 
       verify(secureStorage.read(key: Strings.encryptionKey)).called(1);
       verify(

@@ -1,13 +1,12 @@
 import 'dart:convert';
 
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:libreta_domino/features/game/data/models/game.dart';
+import 'package:libreta_domino/core/constants/constants.dart';
+import 'package:libreta_domino/features/game/data/adapters/game.dart';
 
 class GameDataAdapter extends TypeAdapter<Game> {
-  static const int adapterId = 0;
-
   @override
-  final typeId = adapterId;
+  final typeId = Constants.gameTypeId;
 
   @override
   Game read(BinaryReader reader) {
