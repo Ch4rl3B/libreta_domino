@@ -54,7 +54,10 @@ class GameConfigPage extends ViewModelPageBuilder<GameConfigViewModel> {
 
   @override
   Widget builder(
-      BuildContext context, GameConfigViewModel viewModel, Widget? child) {
+    BuildContext context,
+    GameConfigViewModel viewModel,
+    Widget? child,
+  ) {
     return build(context);
   }
 

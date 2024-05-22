@@ -28,7 +28,10 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
 
   @override
   Widget builder(
-      BuildContext context, SettingsViewModel viewModel, Widget? child) {
+    BuildContext context,
+    SettingsViewModel viewModel,
+    Widget? child,
+  ) {
     return build(context);
   }
 
