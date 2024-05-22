@@ -1,3 +1,5 @@
+[![CI](https://github.com/Ch4rl3B/libreta_domino/actions/workflows/ci.yml/badge.svg)](https://github.com/Ch4rl3B/libreta_domino/actions/workflows/ci.yml)
+
 # libreta_domino
 
 Scoreboard for domino games

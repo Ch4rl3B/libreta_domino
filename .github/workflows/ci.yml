@@ -1,0 +1,43 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+      
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: "17.0.10"
+          cache: 'gradle'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.0"
+          channel: 'stable'
+          cache: true
+          
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Fetch translations
+        run: flutter pub global activate intl_utils && flutter --no-color pub global run intl_utils:generate
+
+      - name: Run code generator
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Verify formatting
+        run: dart format --set-exit-if-changed .
+
+      - name: Analyze project source
+        run: flutter analyze .
+
+      - name: Run tests
+        run: flutter test
