@@ -7,11 +7,14 @@ import 'package:hive_test/hive_test.dart';
 import 'package:libreta_domino/core/constants/strings.dart';
 import 'package:libreta_domino/core/database/database.dart';
 import 'package:libreta_domino/core/di/di.dart';
+import 'package:libreta_domino/features/game/data/adapters/game.dart';
+import 'package:libreta_domino/features/settings/data/adapters/settings.dart';
 import 'package:logger/logger.dart';
 import 'package:mockito/mockito.dart';
+import 'package:nb_utils/nb_utils.dart';
 
 import '../../mocks/method_channels.dart';
-import '../../mocks/mocks.mocks.dart';
+import '../../mocks/mocks.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -92,6 +95,32 @@ void main() {
           value: anyNamed('value'),
         ),
       );
+    });
+  });
+
+  group('flush changes', () {
+    late MockBox<Game> mockGameBox;
+    late MockBox<Settings> mockSettingsBox;
+
+    setUp(() {
+      mockGameBox = MockBox<Game>();
+      mockSettingsBox = MockBox<Settings>();
+    });
+
+    test('should flush gameBox and settingsBox', () async {
+      // Arrange
+      final database = Database(
+        gameBox: mockGameBox,
+        settingsBox: mockSettingsBox,
+      );
+
+      // Act
+      database.flush();
+      await Future.delayed(1.seconds);
+
+      // Assert
+      verify(mockGameBox.flush()).called(1);
+      verify(mockSettingsBox.flush()).called(1);
     });
   });
 }
