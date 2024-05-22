@@ -6,16 +6,17 @@ import 'package:libreta_domino/core/constants/strings.dart';
 import 'package:libreta_domino/core/di/di.dart';
 import 'package:libreta_domino/features/game/data/adapters/game_data_adapter.dart';
 import 'package:libreta_domino/features/game/data/models/game.dart';
+import 'package:libreta_domino/features/history/data/adapters/history.dart';
 
 class Database {
   final Box<Game> gameBox;
   // final Box<SettingsData> settingsBox;
-  // final Box<HistoryData> historyBox;
+  final Box<History> historyBox;
 
   Database._({
     required this.gameBox,
     // required this.settingsBox,
-    // required this.historyBox,
+    required this.historyBox,
   });
 
   static Future<Database> setup() async {
@@ -35,7 +36,7 @@ class Database {
     // Setup adapters
     Hive.registerAdapter(GameDataAdapter());
     // Hive.registerAdapter(SettingsDataAdapter());
-    // Hive.registerAdapter(HistoryDataAdapter());
+    Hive.registerAdapter(HistoryDataAdapter());
 
     // register database box
     final gameBox = await Hive.openBox<Game>(
@@ -46,12 +47,15 @@ class Database {
     //   'settings',
     //   encryptionCipher: HiveAesCipher(keyUInt8List),
     // );
-    // final historyBox = await Hive.openBox<HistoryData>(
-    //   'history',
-    //   encryptionCipher: HiveAesCipher(keyUInt8List),
-    // );
+    final historyBox = await Hive.openBox<History>(
+      'history',
+      encryptionCipher: HiveAesCipher(keyUInt8List),
+    );
 
     logger.i('>>> Database setup completed!');
-    return Database._(gameBox: gameBox);
+    return Database._(
+      gameBox: gameBox,
+      historyBox: historyBox,
+    );
   }
 }
