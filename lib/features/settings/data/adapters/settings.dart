@@ -1,15 +1,13 @@
-import 'dart:ui';
-
 import 'package:hive/hive.dart';
 
 part 'settings.g.dart';
 
-@HiveType(typeId: 18419132186, adapterName: 'SettingsDataAdapter')
+@HiveType(typeId: 2, adapterName: 'SettingsDataAdapter')
 class Settings extends HiveObject {
   @HiveField(0, defaultValue: 'es')
   late String locale;
 
-  @HiveField(1, defaultValue: Brightness.light)
+  @HiveField(1, defaultValue: 1) // Brightness.light
   late int brightness;
 
   @HiveField(2, defaultValue: 14.0)
