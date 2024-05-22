@@ -1,4 +1,14 @@
 {
   "@@locale": "de",
-  "locale": "de"
+  "locale": "de",
+  "settingsPageLabel": "Einstellungen",
+  "changeBrightness": "Helligkeit Ändern",
+  "changeLanguage": "Sprache Ändern",
+  "textScale": "Textgröße",
+  "enLocale": "Englisch",
+  "deLocale": "Deutsch",
+  "esLocale": "Spanisch",
+  "restoreTextSize": "Textgröße Wiederherstellen",
+  "darkBrightness": "Dunkel",
+  "lightBrightness": "Hell"
 }

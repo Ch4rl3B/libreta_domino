@@ -1,4 +1,14 @@
 {
   "@@locale": "en",
-  "locale": "en"
+  "locale": "en",
+  "settingsPageLabel": "Settings",
+  "changeBrightness": "Change Brightness",
+  "changeLanguage": "Change Language",
+  "textScale": "Text Scale",
+  "enLocale": "English",
+  "deLocale": "German",
+  "esLocale": "Spanish",
+  "restoreTextSize": "Restore Text Size",
+  "darkBrightness": "Dark",
+  "lightBrightness": "Light"
 }

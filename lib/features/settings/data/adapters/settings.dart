@@ -11,12 +11,12 @@ class Settings extends HiveObject {
   @HiveField(1, defaultValue: 1) // Brightness.light
   int brightness;
 
-  @HiveField(2, defaultValue: 14.0)
+  @HiveField(2, defaultValue: 1.0)
   double textScale;
 
   Settings._(this.locale, this.brightness, this.textScale);
 
-  factory Settings() => Settings._('es', 1, 14.0);
+  factory Settings() => Settings._('en', 1, 1.0);
 
   Settings copyWith({
     String? locale,
@@ -41,4 +41,9 @@ class Settings extends HiveObject {
   @override
   int get hashCode =>
       locale.hashCode ^ brightness.hashCode ^ textScale.hashCode;
+
+  @override
+  String toString() {
+    return 'Settings{locale: $locale, brightness: $brightness, textScale: $textScale}';
+  }
 }
