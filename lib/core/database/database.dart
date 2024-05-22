@@ -13,7 +13,7 @@ class Database {
   final Box<Game> gameBox;
   final Box<Settings> settingsBox;
 
-  Database._({
+  Database({
     required this.gameBox,
     required this.settingsBox,
   });
@@ -51,9 +51,14 @@ class Database {
     );
 
     logger.i('>>> Database setup completed!');
-    return Database._(
+    return Database(
       gameBox: gameBox,
       settingsBox: settingsBox,
     );
+  }
+
+  void flush() async {
+    await gameBox.flush();
+    await settingsBox.flush();
   }
 }
