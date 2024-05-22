@@ -42,7 +42,7 @@ class GameConfigPage extends ViewModelPageBuilder<GameConfigViewModel> {
             4.height,
             TextButton(
               onPressed: () {
-                router.push(const SettingsRoute());
+                router.push(SettingsRoute());
               },
               child: const Text('To Settings >'),
             ),

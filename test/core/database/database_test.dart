@@ -9,48 +9,26 @@ import 'package:libreta_domino/core/database/database.dart';
 import 'package:libreta_domino/core/di/di.dart';
 import 'package:libreta_domino/features/game/data/adapters/game.dart';
 import 'package:libreta_domino/features/settings/data/adapters/settings.dart';
-import 'package:logger/logger.dart';
 import 'package:mockito/mockito.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../mocks/method_channels.dart';
 import '../../mocks/mocks.dart';
+import '../di/di.dart';
 
-void main() {
+void main() async {
+  await setUpTestHive();
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  late MockLogger logger;
   late MockFlutterSecureStorage secureStorage;
 
-  setUpAll(setupMethodChannels);
+  setUpAll(setUpTestDependencyInjection);
 
   setUp(() {
-    logger = MockLogger();
-    secureStorage = MockFlutterSecureStorage();
-
-    locator.allowReassignment = true;
-    locator.registerSingleton<Logger>(logger);
-    locator.registerSingleton<FlutterSecureStorage>(secureStorage);
-
-    when(
-      logger.i(
-        any,
-        time: anyNamed('time'),
-        error: anyNamed('error'),
-        stackTrace: anyNamed('stackTrace'),
-      ),
-    ).thenReturn(null);
+    secureStorage =
+        locator.get<FlutterSecureStorage>() as MockFlutterSecureStorage;
   });
 
   group('Database setup', () {
-    setUp(() async {
-      await setUpTestHive();
-    });
-
-    tearDown(() async {
-      await tearDownTestHive();
-    });
-
     test('should setup Database with encryption key', () async {
       // Arrange
       final encryptionKey = Hive.generateSecureKey();
@@ -71,8 +49,8 @@ void main() {
 
     test('should generate and save encryption key if not exists', () async {
       // Arrange
-      when(secureStorage.read(key: anyNamed('key')))
-          .thenAnswer((_) async => null);
+      when(secureStorage.containsKey(key: anyNamed('key')))
+          .thenAnswer((_) async => false);
 
       when(
         secureStorage.write(

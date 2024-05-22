@@ -23,7 +23,10 @@ void setupMethodChannels() {
       .setMockMethodCallHandler(pathProviderChannel,
           (MethodCall methodCall) async {
     if (methodCall.method == 'getTemporaryDirectory') {
-      return '/mock/temp/dir';
+      return '/home/mock/temp/dir';
+    }
+    if (methodCall.method == 'getApplicationDocumentsDirectory') {
+      return '/home/mock/temp/dir';
     }
     return null;
   });
