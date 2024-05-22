@@ -21,7 +21,7 @@ class Database {
   });
 
   static Future<Database> setup() async {
-    const secureStorage = FlutterSecureStorage();
+    final secureStorage = locator.get<FlutterSecureStorage>();
     var encryptionKeyString =
         await secureStorage.read(key: Strings.encryptionKey);
     if (encryptionKeyString == null) {
@@ -35,9 +35,15 @@ class Database {
     final keyUInt8List = base64Url.decode(encryptionKeyString);
 
     // Setup adapters
-    Hive.registerAdapter(GameDataAdapter());
-    Hive.registerAdapter(SettingsDataAdapter());
-    Hive.registerAdapter(HistoryDataAdapter());
+    if (!Hive.isAdapterRegistered(GameDataAdapter.adapterId)) {
+      Hive.registerAdapter(GameDataAdapter());
+    }
+    if (!Hive.isAdapterRegistered(SettingsDataAdapter.adapterId)) {
+      Hive.registerAdapter(SettingsDataAdapter());
+    }
+    if (!Hive.isAdapterRegistered(HistoryDataAdapter.adapterId)) {
+      Hive.registerAdapter(HistoryDataAdapter());
+    }
 
     // register database box
     final gameBox = await Hive.openBox<Game>(
