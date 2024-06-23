@@ -6,7 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:libreta_domino/core/constants/strings.dart';
 import 'package:libreta_domino/features/settings/presentation/pages/settings_page.dart';
 import 'package:libreta_domino/features/splash/presentation/widgets/border_paper_fold.dart';
-import 'package:libreta_domino/generated/l10n.dart';
+import 'package:libreta_domino/translations/domain/entities/l10n.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../../../../core/di/di.dart';

@@ -1,0 +1,276 @@
+{
+  "appId": "libretadomino",
+  "version": 2,
+  "data": [
+    {
+      "id": "de_changeBrightness",
+      "locale": "de",
+      "key": "changeBrightness",
+      "value": "Helligkeit ändern",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "de_darkBrightness",
+      "locale": "de",
+      "key": "darkBrightness",
+      "value": "Dunkel",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "de_deLocale",
+      "locale": "de",
+      "key": "deLocale",
+      "value": "Deutsch",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "de_enLocale",
+      "locale": "de",
+      "key": "enLocale",
+      "value": "Englisch",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "de_esLocale",
+      "locale": "de",
+      "key": "esLocale",
+      "value": "Spanisch",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "de_lightBrightness",
+      "locale": "de",
+      "key": "lightBrightness",
+      "value": "Licht",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "de_locale",
+      "locale": "de",
+      "key": "locale",
+      "value": "de",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "de_restoreTextSize",
+      "locale": "de",
+      "key": "restoreTextSize",
+      "value": "Textgröße wiederherstellen",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "de_settingsPageLabel",
+      "locale": "de",
+      "key": "settingsPageLabel",
+      "value": "Einstellungen",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "de_textScale",
+      "locale": "de",
+      "key": "textScale",
+      "value": "Textskala",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "en_changeBrightness",
+      "locale": "en",
+      "key": "changeBrightness",
+      "value": "Change Brightness",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "en_darkBrightness",
+      "locale": "en",
+      "key": "darkBrightness",
+      "value": "Dark",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "en_deLocale",
+      "locale": "en",
+      "key": "deLocale",
+      "value": "German",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "en_enLocale",
+      "locale": "en",
+      "key": "enLocale",
+      "value": "English",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "en_esLocale",
+      "locale": "en",
+      "key": "esLocale",
+      "value": "Spanish",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "en_lightBrightness",
+      "locale": "en",
+      "key": "lightBrightness",
+      "value": "Light",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "en_locale",
+      "locale": "en",
+      "key": "locale",
+      "value": "en",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "en_restoreTextSize",
+      "locale": "en",
+      "key": "restoreTextSize",
+      "value": "Restore Text Size",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "en_settingsPageLabel",
+      "locale": "en",
+      "key": "settingsPageLabel",
+      "value": "Settings",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "en_textScale",
+      "locale": "en",
+      "key": "textScale",
+      "value": "Text Scale",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "es_changeBrightness",
+      "locale": "es",
+      "key": "changeBrightness",
+      "value": "Cambiar brillo",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "es_darkBrightness",
+      "locale": "es",
+      "key": "darkBrightness",
+      "value": "Oscuro",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "es_deLocale",
+      "locale": "es",
+      "key": "deLocale",
+      "value": "Alemán",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "es_enLocale",
+      "locale": "es",
+      "key": "enLocale",
+      "value": "Inglés",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "es_esLocale",
+      "locale": "es",
+      "key": "esLocale",
+      "value": "Español",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "es_lightBrightness",
+      "locale": "es",
+      "key": "lightBrightness",
+      "value": "Luz",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "es_locale",
+      "locale": "es",
+      "key": "locale",
+      "value": "es",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "es_restoreTextSize",
+      "locale": "es",
+      "key": "restoreTextSize",
+      "value": "Restaurar tamaño del texto",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "es_settingsPageLabel",
+      "locale": "es",
+      "key": "settingsPageLabel",
+      "value": "Ajustes",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    },
+    {
+      "id": "es_textScale",
+      "locale": "es",
+      "key": "textScale",
+      "value": "Escala de texto",
+      "pluralize": false,
+      "parametrized": false,
+      "parameterKeys": ""
+    }
+  ]
+}

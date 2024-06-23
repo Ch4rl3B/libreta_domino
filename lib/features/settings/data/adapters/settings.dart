@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:hive/hive.dart';
 import 'package:libreta_domino/core/constants/constants.dart';
 
@@ -14,9 +15,16 @@ class Settings extends HiveObject {
   @HiveField(2, defaultValue: 1.0)
   double textScale;
 
-  Settings._(this.locale, this.brightness, this.textScale);
+  @HiveField(3, defaultValue: 1)
+  int settingsHash;
+  Settings._(this.locale, this.brightness, this.textScale, this.settingsHash);
 
-  factory Settings() => Settings._('en', 1, 1.0);
+  factory Settings() => Settings._(
+        'en',
+        1,
+        1.0,
+        'new'.hashCode,
+      );
 
   Settings copyWith({
     String? locale,
@@ -27,6 +35,7 @@ class Settings extends HiveObject {
         locale ?? this.locale,
         brightness ?? this.brightness,
         textScale ?? this.textScale,
+        Faker().guid.guid().hashCode,
       );
 
   @override
@@ -34,13 +43,10 @@ class Settings extends HiveObject {
       identical(this, other) ||
       other is Settings &&
           runtimeType == other.runtimeType &&
-          locale == other.locale &&
-          brightness == other.brightness &&
-          textScale == other.textScale;
+          settingsHash == other.settingsHash;
 
   @override
-  int get hashCode =>
-      locale.hashCode ^ brightness.hashCode ^ textScale.hashCode;
+  int get hashCode => settingsHash;
 
   @override
   String toString() {

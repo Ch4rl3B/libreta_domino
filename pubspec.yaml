@@ -47,7 +47,6 @@ dependencies:
   intl: ^0.19.0
   json_annotation: ^4.9.0
   logger: ^2.3.0
-  nb_utils: ^7.0.2
   path: ^1.9.0
   reactive_forms: ^17.0.1
   loading_animation_widget: ^1.2.1
@@ -57,6 +56,8 @@ dependencies:
   flutter_secure_storage: ^4.2.1
   faker: ^2.1.0
   path_provider_platform_interface: ^2.1.2
+  parse_server_sdk_flutter: ^8.0.0
+  nb_utils: ^6.0.7
 
 dev_dependencies:
   flutter_test:
@@ -89,6 +90,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/l10n/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
@@ -119,6 +122,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-flutter_intl:
-  enabled: true
-  class_name: L10n

@@ -4,7 +4,7 @@ import 'package:libreta_domino/core/constants/strings.dart';
 import 'package:libreta_domino/core/interfaces/view_model_page_builder.dart';
 import 'package:libreta_domino/features/settings/presentation/viewModels/settings_view_model.dart';
 import 'package:libreta_domino/features/splash/presentation/widgets/border_paper_fold.dart';
-import 'package:libreta_domino/generated/l10n.dart';
+import 'package:libreta_domino/translations/domain/entities/l10n.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 export 'package:libreta_domino/features/settings/presentation/viewModels/settings_view_model.dart';
@@ -25,7 +25,7 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
         elevation: 0,
         shadowColor: Colors.transparent,
         title: Text(
-          L10n.of(context).settingsPageLabel,
+          L10n.of(context).translate('settingsPageLabel'),
         ),
         centerTitle: true,
         backgroundColor: Theme.of(context).canvasColor,
@@ -51,7 +51,9 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     12.height,
-                    Text(L10n.of(context).changeBrightness),
+                    Text(
+                      L10n.of(context).translate('changeBrightness'),
+                    ),
                     8.height,
                     Row(
                       mainAxisSize: MainAxisSize.min,
@@ -62,7 +64,9 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
                           onPressed: viewModel.settings.brightness == 1
                               ? null
                               : () => viewModel.changeBrightness(1),
-                          child: Text(L10n.of(context).lightBrightness),
+                          child: Text(
+                            L10n.of(context).translate('lightBrightness'),
+                          ),
                         ),
                         8.width,
                         TextButton(
@@ -70,12 +74,14 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
                           onPressed: viewModel.settings.brightness == 2
                               ? null
                               : () => viewModel.changeBrightness(2),
-                          child: Text(L10n.of(context).darkBrightness),
+                          child: Text(
+                            L10n.of(context).translate('darkBrightness'),
+                          ),
                         ),
                       ],
                     ),
                     12.height,
-                    Text(L10n.of(context).changeLanguage),
+                    Text(L10n.of(context).translate('changeLanguage')),
                     8.height,
                     Wrap(
                       alignment: WrapAlignment.center,
@@ -87,7 +93,7 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
                           onPressed: viewModel.settings.locale == 'es'
                               ? null
                               : () => viewModel.changeLanguage('es'),
-                          child: Text(L10n.of(context).esLocale),
+                          child: Text(L10n.of(context).translate('esLocale')),
                         ),
                         8.width,
                         TextButton(
@@ -95,7 +101,9 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
                           onPressed: viewModel.settings.locale == 'en'
                               ? null
                               : () => viewModel.changeLanguage('en'),
-                          child: Text(L10n.of(context).enLocale),
+                          child: Text(
+                            L10n.of(context).translate('enLocale'),
+                          ),
                         ),
                         8.width,
                         TextButton(
@@ -103,12 +111,16 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
                           onPressed: viewModel.settings.locale == 'de'
                               ? null
                               : () => viewModel.changeLanguage('de'),
-                          child: Text(L10n.of(context).deLocale),
+                          child: Text(
+                            L10n.of(context).translate('deLocale'),
+                          ),
                         ),
                       ],
                     ),
                     12.height,
-                    Text(L10n.of(context).textScale),
+                    Text(
+                      L10n.of(context).translate('textScale'),
+                    ),
                     8.height,
                     Row(
                       mainAxisSize: MainAxisSize.min,
@@ -136,7 +148,7 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
                       key: const Key(Strings.settingsResetButtonKey),
                       onPressed: viewModel.restoreText,
                       child: Text(
-                        L10n.of(context).restoreTextSize,
+                        L10n.of(context).translate('restoreTextSize'),
                         textAlign: TextAlign.center,
                       ),
                     ),

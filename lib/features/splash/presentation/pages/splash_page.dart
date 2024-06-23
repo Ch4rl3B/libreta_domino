@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:libreta_domino/core/interfaces/view_model_page_builder.dart';
 import 'package:libreta_domino/core/routes/app_router.dart';
 import 'package:libreta_domino/features/splash/presentation/viewModels/splash_view_model.dart';
+import 'package:libreta_domino/translations/domain/entities/l10n.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 export 'package:libreta_domino/features/splash/presentation/viewModels/splash_view_model.dart';
@@ -12,7 +13,11 @@ class SplashPage extends ViewModelPageBuilder<SplashViewModel> {
   const SplashPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder(
+    BuildContext context,
+    SplashViewModel viewModel,
+    Widget? child,
+  ) {
     return Scaffold(
       body: SizedBox.expand(
         child: Column(
@@ -21,7 +26,7 @@ class SplashPage extends ViewModelPageBuilder<SplashViewModel> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'Splash Page',
+              L10n.of(context).translate('splashPageTitle', 'Splash Page'),
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             8.height,
@@ -35,15 +40,6 @@ class SplashPage extends ViewModelPageBuilder<SplashViewModel> {
         ),
       ),
     );
-  }
-
-  @override
-  Widget builder(
-    BuildContext context,
-    SplashViewModel viewModel,
-    Widget? child,
-  ) {
-    return build(context);
   }
 
   @override
