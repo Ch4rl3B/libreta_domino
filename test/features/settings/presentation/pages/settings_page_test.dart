@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:libreta_domino/core/constants/strings.dart';
@@ -9,8 +10,10 @@ import 'package:libreta_domino/features/splash/presentation/widgets/border_paper
 import 'package:libreta_domino/translations/domain/entities/l10n.dart';
 import 'package:nb_utils/nb_utils.dart';
 
+import '../../../../core/database/utils.dart';
 import '../../../../core/di/di.dart';
 import '../../../../mocks/method_channels.dart';
+import '../../../../mocks/mocks.dart';
 
 void main() async {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +30,11 @@ void main() async {
     await Future.wait([
       initialize(),
     ]);
+
+    final client = MockParseClient();
+    await initializeMockedParse(client);
     await setUpTestDependencyInjection();
+    await setupTestingDB();
   });
 
   setUp(() {
@@ -37,7 +44,14 @@ void main() async {
   Future<void> pumpSettingsPage(WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
-        localizationsDelegates: const [L10n.delegate],
+        localizationsDelegates: const [
+          L10n.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: L10n.delegate.supportedLocales,
+        locale: const Locale('en'),
         home: SettingsPage(
           overrideViewModel: viewModel,
         ),

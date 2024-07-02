@@ -73,7 +73,7 @@ class Database {
       await settingsBox.add(Settings());
     }
 
-    if (appLocalization.isEmpty) {
+    if (appLocalization.isEmpty && !locator.allowReassignment) {
       logger.i('>>> App first run. Added default localizations');
       final jsonString = await rootBundle.loadString('assets/l10n/l10n.json');
       final jsonResponse = json.decode(jsonString);

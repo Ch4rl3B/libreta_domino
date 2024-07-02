@@ -20,9 +20,9 @@ class TranslationsRepository {
     final response = translations.fold<List<Locale>>(<Locale>[], (list, tran) {
       Locale? locale;
       if (tran.locale.contains('_')) {
-        final split = tran.locale.toLowerCase().split('_');
+        final split = tran.locale.split('_');
         locale = Locale.fromSubtags(
-          languageCode: split[0],
+          languageCode: split[0].toLowerCase(),
           countryCode: split[1],
         );
       } else {
@@ -68,24 +68,29 @@ class TranslationsRepository {
   }
 
   Future<bool> fetchTranslations() async {
-    final parameters = appLocalizationBox.values.first.toJson();
+    final parameters = appLocalizationBox.values.first;
     final function = ParseCloudFunction('version');
     final parseResponse = await function.execute(
-      parameters: parameters,
+      parameters: parameters.toJson(),
     );
     if (parseResponse.success &&
         parseResponse.result != null &&
         (parseResponse.result as Map).isNotEmpty) {
       var appLocalizations = AppLocalization.fromJson(parseResponse.result);
-      appLocalizations = appLocalizations.copyWith(
-        data: ((parseResponse.result as Map)['data'] as List)
-            .map((e) => Translation.fromJson(e as Map<String, dynamic>))
-            .toList(),
-      );
-      await appLocalizationBox.put(appLocalizations.version, appLocalizations);
-      await appLocalizationBox.delete(parameters["version"]);
-      await appLocalizationBox.flush();
-      return true;
+      if (appLocalizations.version != parameters.version) {
+        appLocalizations = appLocalizations.copyWith(
+          data: ((parseResponse.result as Map)['data'] as List)
+              .map((e) => Translation.fromJson(e as Map<String, dynamic>))
+              .toList(),
+        );
+        await appLocalizationBox.put(
+          appLocalizations.version,
+          appLocalizations,
+        );
+        await appLocalizationBox.delete(parameters.version);
+        await appLocalizationBox.flush();
+        return true;
+      }
     }
     return false;
   }

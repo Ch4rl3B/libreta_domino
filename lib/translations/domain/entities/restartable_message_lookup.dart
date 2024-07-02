@@ -63,13 +63,10 @@ class RestartableMessageLookup implements MessageLookup {
     return _lastLookup;
   }
 
-  /// If we do not already have a locale for [localeName] then
-  /// [findLocale] will be called and the result stored as the lookup
-  /// mechanism for that locale.
   @override
   void addLocale(String localeName, Function findLocale) {
     var canonical = Intl.canonicalizedLocale(localeName);
-    var newLocale = findLocale(canonical);
+    var newLocale = findLocale.call(canonical);
     if (newLocale != null) {
       availableMessages[localeName] = newLocale;
       availableMessages[canonical] = newLocale;

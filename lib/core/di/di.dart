@@ -36,5 +36,13 @@ Future<void> initializeParse() async {
     autoSendSessionId: true,
     appName: 'Translations',
     coreStore: await CoreStoreSharedPreferences.getInstance(),
+    clientCreator: ({
+      required bool sendSessionId,
+      SecurityContext? securityContext,
+    }) =>
+        ParseDioClient(
+      sendSessionId: sendSessionId,
+      securityContext: securityContext,
+    ),
   );
 }

@@ -25,7 +25,10 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
         elevation: 0,
         shadowColor: Colors.transparent,
         title: Text(
-          L10n.of(context).translate('settingsPageLabel'),
+          L10n.of(context).translate(
+            'settingsPageLabel',
+            'Settings',
+          ),
         ),
         centerTitle: true,
         backgroundColor: Theme.of(context).canvasColor,
@@ -52,7 +55,10 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
                   children: [
                     12.height,
                     Text(
-                      L10n.of(context).translate('changeBrightness'),
+                      L10n.of(context).translate(
+                        'changeBrightness',
+                        'Change Brightness',
+                      ),
                     ),
                     8.height,
                     Row(
@@ -81,7 +87,12 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
                       ],
                     ),
                     12.height,
-                    Text(L10n.of(context).translate('changeLanguage')),
+                    Text(
+                      L10n.of(context).translate(
+                        'changeLanguage',
+                        'Change Language',
+                      ),
+                    ),
                     8.height,
                     Wrap(
                       alignment: WrapAlignment.center,
@@ -119,7 +130,10 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
                     ),
                     12.height,
                     Text(
-                      L10n.of(context).translate('textScale'),
+                      L10n.of(context).translate(
+                        'textScale',
+                        'Text Scale',
+                      ),
                     ),
                     8.height,
                     Row(
@@ -148,7 +162,10 @@ class SettingsPage extends ViewModelPageBuilder<SettingsViewModel> {
                       key: const Key(Strings.settingsResetButtonKey),
                       onPressed: viewModel.restoreText,
                       child: Text(
-                        L10n.of(context).translate('restoreTextSize'),
+                        L10n.of(context).translate(
+                          'restoreTextSize',
+                          'Restore Text Size',
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ),

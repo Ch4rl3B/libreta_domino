@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:libreta_domino/features/settings/data/repository/settings_repository.dart';
 import 'package:logger/logger.dart';
 import 'package:mockito/annotations.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';
 
 export 'mocks.mocks.dart';
@@ -19,6 +20,9 @@ export 'mocks.mocks.dart';
     Box,
     Directory,
     PathProviderPlatform,
+    Parse,
+    ParseClient,
+    CoreStoreSharedPreferences,
   ],
 )
 void main() {}

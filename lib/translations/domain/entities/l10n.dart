@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
 import 'package:intl/src/intl_helpers.dart';
 import 'package:libreta_domino/translations/data/repository/translations_repository.dart';
+import 'package:libreta_domino/translations/domain/entities/app_localization_delegate.dart';
 import 'package:libreta_domino/translations/domain/entities/restartable_message_lookup.dart';
 
 class L10n {
@@ -57,31 +58,21 @@ class L10n {
 
   /// User programs should call this before using [localeName] for messages.
   static Future<bool> initializeMessages(String localeName) {
-    var availableLocale = Intl.verifiedLocale(
-      localeName,
-      (locale) => delegate.isSupported(Locale(locale)),
-      onFailure: (_) => null,
-    );
-    if (availableLocale == null) {
+    final split = localeName.split('_');
+    if (!delegate.isSupported(
+      Locale.fromSubtags(
+        languageCode: split[0].toLowerCase(),
+        countryCode: split.length > 1 ? split[1] : null,
+      ),
+    )) {
       return SynchronousFuture(false);
     }
     initializeInternalMessageLookup(() => RestartableMessageLookup());
-    messageLookup.addLocale(availableLocale, _findGeneratedMessagesFor);
+    messageLookup.addLocale(localeName, _findGeneratedMessagesFor);
     return SynchronousFuture(true);
   }
 
-  static bool _messagesExistFor(String locale) {
-    try {
-      return const TranslationsRepository().translate(locale, 'locale') != null;
-    } catch (e) {
-      return false;
-    }
-  }
-
   static MessageLookupByLibrary? _findGeneratedMessagesFor(String locale) {
-    var actualLocale =
-        Intl.verifiedLocale(locale, _messagesExistFor, onFailure: (_) => null);
-    if (actualLocale == null) return null;
     return const TranslationsRepository().getTranslations(locale);
   }
 
@@ -105,32 +96,14 @@ class L10n {
   }
 
   void changeLocale(String code) {
-    load(Locale(code));
-  }
-}
-
-class AppLocalizationDelegate extends LocalizationsDelegate<L10n> {
-  final TranslationsRepository repository;
-
-  const AppLocalizationDelegate({
-    this.repository = const TranslationsRepository(),
-  });
-
-  List<Locale> get supportedLocales => repository.supportedLocales();
-
-  @override
-  bool isSupported(Locale locale) => _isSupported(locale);
-  @override
-  Future<L10n> load(Locale locale) => L10n.load(locale);
-  @override
-  bool shouldReload(AppLocalizationDelegate old) => false;
-
-  bool _isSupported(Locale locale) {
-    for (var supportedLocale in supportedLocales) {
-      if (supportedLocale.languageCode == locale.languageCode) {
-        return true;
-      }
+    final split = code.split('_');
+    if (delegate.isSupported(
+      Locale.fromSubtags(
+        languageCode: split[0].toLowerCase(),
+        countryCode: split.length > 1 ? split[1] : null,
+      ),
+    )) {
+      load(Locale(code));
     }
-    return false;
   }
 }
